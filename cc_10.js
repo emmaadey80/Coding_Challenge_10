@@ -29,6 +29,7 @@ prod1.updateStock(3);
 console.log(prod1.getDetails()); 
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 7"
 
+
 // Task 2: Creating an Order Class
 console.log("\nTask 2: Creating an Order Class");
 
@@ -55,6 +56,7 @@ console.log(order1.getOrderDetails());
 console.log(prod1.getDetails()); 
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5" (Stock reduced)
 
+
 // Task 3: Creating an Inventory Class
 console.log("\nTask 3: Creating an Inventory Class");
 
@@ -80,6 +82,13 @@ class Inventory { // creating class inventory
     listOrders() { // task 4 adding method listOrders()
         this.orders.forEach(order => console.log(order.getOrderDetails())); // logging all placed orders
     }
+    restockProduct(productId, quantity) { // task 5 adding method restockProduct(productId, quantity)
+        let product = this.products.find(product => product.id === productId);
+        if (product) {
+            product.stock += quantity; // increase the stock
+        }
+
+    }
 
 }
 
@@ -88,6 +97,7 @@ const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts();
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
+
 
 // Task 4: Implementing Order Management
 console.log("\nTask 4: Implementing Order Management");
@@ -98,3 +108,12 @@ inventory.listOrders();
 // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
 console.log(prod1.getDetails());
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
+
+
+// Task 5: Implementing Product Restocking
+console.log("\nTask 5: Implementing Product Restocking");
+
+// Logging test cases outputs:
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 8"
